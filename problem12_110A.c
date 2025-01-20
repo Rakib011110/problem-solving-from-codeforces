@@ -1,20 +1,25 @@
-
 #include <stdio.h>
-#include <string.h>
 
 int main() {
-    char n[20];
-    scanf("%s", n);
+    long long n;
+    scanf("%lld", &n);
 
     int luckyCount = 0;
 
 
-    for (int i = 0; n[i] != '\0'; i++) {
-        if (n[i] == '4' || n[i] == '7') {
+    while (n > 0) {
+        int digit = n % 10;
+        if (digit == 4 || digit == 7) {
             luckyCount++;
         }
+        n /= 10;
     }
 
+
+    if (luckyCount == 0) {
+        printf("NO\n");
+        return 0;
+    }
 
     while (luckyCount > 0) {
         int digit = luckyCount % 10;
